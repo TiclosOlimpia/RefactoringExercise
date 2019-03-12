@@ -5,10 +5,10 @@ using Xunit;
 
 namespace Training
 {
-    public class WhenCalendarItem
+    public class CalendarItemShould
     {
         [Fact]
-        public void StartsOnFirstDayOfCurrentYear_MaybeSplit_ReturnsItem()
+        public void NotSplit_WhenStartsOnFirstDayOfCurrentYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2018, 1, 1), 
@@ -21,7 +21,7 @@ namespace Training
         }
 
         [Fact]
-        public void IsDuringYear_MaybeSplit_ReturnsItem()
+        public void NotSplit_WhenItemIsDuringYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2018, 6, 1), 
@@ -34,7 +34,7 @@ namespace Training
         }
 
         [Fact]
-        public void StartsOnFirstDayOfNextYear_MaybeSplit_ReturnsItem()
+        public void NotSplit_WhenItemStartsOnFirstDayOfNextYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2019, 1, 1), 
@@ -48,7 +48,7 @@ namespace Training
 
 
         [Fact]
-        public void EndsOnLastDayOfPreviousYear_MaybeSplit_ReturnsItem()
+        public void NotSplit_WhenItemEndsOnLastDayOfPreviousYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2017, 12, 1), 
@@ -61,7 +61,7 @@ namespace Training
         }
         
         [Fact]
-        public void EndsOnEndOfLastDayOfCurrentYear_MaybeSplit_ReturnsItem()
+        public void NotSplit_WhenItemEndsOnEndOfLastDayOfCurrentYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2018, 12, 30), 
@@ -76,7 +76,7 @@ namespace Training
 
         [Fact]
         
-        public void WhenStartsInPreviousYearAndEndsInCurrentYear_MaybeSplit_ReturnsTwoItems()
+        public void SplitInTwo_WhenItemStartsInPreviousYearAndEndsInCurrentYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2017, 12, 31), 
@@ -97,7 +97,7 @@ namespace Training
         }
 
         [Fact(Skip = "FIXME")]
-        public void StartsDuringYearAndEndsAfterYear_MaybeSplit_ReturnsTwoItems()
+        public void SplitInTwo_WhenItemStartsDuringYearAndEndsAfterYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2018, 12, 20), 
@@ -118,7 +118,7 @@ namespace Training
         }
 
         [Fact(Skip = "FIXME")]
-        public void StartsInPreviousYearAndEndsAfterYear_MaybeSplit_ReturnsThreeItems()
+        public void SplitInThree_WhenItemStartsInPreviousYearAndEndsAfterYear()
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2017, 12, 20), 
@@ -146,7 +146,7 @@ namespace Training
         [Theory(Skip = "FIXME if you can")]
         [InlineData(DateTimeKind.Local)]
         [InlineData(DateTimeKind.Utc)]
-        public void DatesAreInUtc_MaybeSplit_ReturnsItemsWithUtcTime(DateTimeKind kind)
+        public void KeepDateTimeKind_WhenSplitting(DateTimeKind kind)
         {
             CalendarItem item = NewCalendarItem(
                 new DateTime(2018, 12, 20, 0, 0, 0, kind),

@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarItem.cs" />
-    <Compile Include="CalendarItemTest.cs" />
+    <Compile Include="CalendarItemShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
