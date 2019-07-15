@@ -96,7 +96,7 @@ namespace Training
             result[1].EndDate.ShouldBe(item.EndDate);
         }
 
-        [Fact(Skip = "FIXME")]
+        [Fact]
         public void SplitInTwo_WhenItemStartsDuringYearAndEndsAfterYear()
         {
             CalendarItem item = NewCalendarItem(
@@ -117,7 +117,7 @@ namespace Training
             result[1].EndDate.ShouldBe(item.EndDate);
         }
 
-        [Fact(Skip = "FIXME")]
+        [Fact]
         public void SplitInThree_WhenItemStartsInPreviousYearAndEndsAfterYear()
         {
             CalendarItem item = NewCalendarItem(
@@ -143,7 +143,7 @@ namespace Training
             result[2].EndDate.ShouldBe(item.EndDate);
         }
 
-        [Theory(Skip = "FIXME if you can")]
+        [Theory]
         [InlineData(DateTimeKind.Local)]
         [InlineData(DateTimeKind.Utc)]
         public void KeepDateTimeKind_WhenSplitting(DateTimeKind kind)
